@@ -13,6 +13,9 @@ import lombok.experimental.SuperBuilder;
 @Schema(name = "BaseResponseDto", description = "Schema for Base Response Dto")
 public class BaseResponseDto {
 
+    @Schema(name = "Code", description = "Code of the Response", example = "200")
     private String code;
+
+    @Schema(name = "Message", description = "Message of the response", example = "Boo Created Successfully")
     private String message;
 }
