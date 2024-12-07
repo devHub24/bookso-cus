@@ -146,4 +146,12 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.getAll());
     }
 
+    @Autowired
+    private CustomerInfo customerInfo;
+
+    @GetMapping("/get-info")
+    public CustomerInfo getInfo(){
+        return customerInfo;
+    }
+
 }

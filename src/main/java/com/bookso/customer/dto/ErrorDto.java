@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public class ErrorDto extends BaseResponseDto{
 
     @Schema(description = "HttpStatus Code for the Schema", example = "200")//Documentation
-    private HttpStatus code;
+    private String code;
 
     @Schema(description = "Message of the Error", example = "Created Successfully")//Documentation
     private String message;
