@@ -1,5 +1,6 @@
 package com.bookso.customer.exceptions;
 
+import com.bookso.customer.constants.CustomerConstants;
 import com.bookso.customer.dto.ErrorDto;
 import com.bookso.customer.enums.CustomerErrors;
 import lombok.extern.slf4j.Slf4j;
@@ -55,11 +56,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CustomerExceptions.class)
     public ResponseEntity<ErrorDto> handleCustomerExceptions(CustomerExceptions customerExceptions, WebRequest webRequest){
 
-     ErrorDto error = new ErrorDto(
-             HttpStatus.BAD_REQUEST,
-             customerExceptions.getMessage(),
-             webRequest.getDescription(false),
-             LocalDateTime.now());
-     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorDto.builder()
+             .code(CustomerConstants.STATUS_400)
+             .path(webRequest.getDescription(false))
+             .message(customerExceptions.getMessage())
+             .timeStamp(LocalDateTime.now()).build());
     }
 }
